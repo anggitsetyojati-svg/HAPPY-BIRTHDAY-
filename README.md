@@ -39,9 +39,9 @@ h1{font-size:clamp(2rem,5vw,4rem)}
 
 /* Slider styles */
 .slider-container{position:relative;width:min(90%,420px);height:400px;margin:auto;border-radius:22px;overflow:hidden;touch-action:pan-y}
-.slider-wrapper{display:flex;height:100%;transition:transform 0.3s ease-out}
+.slider-wrapper{display:flex;height:100%;transition:transform 0.3s ease-out;gap:20px;padding:0 10px}
 .slider-wrapper.dragging{transition:none}
-.slider img{width:100%;height:100%;object-fit:cover;border-radius:22px;flex-shrink:0;opacity:0;transition:opacity 0.3s ease-out}
+.slider img{width:100%;height:100%;object-fit:cover;border-radius:22px;flex-shrink:0;opacity:0;transition:opacity 0.3s ease-out;margin-right:20px}
 .slider img:first-child{opacity:1}
 .slider-nav{display:flex;justify-content:center;gap:10px;margin-top:20px}
 .slider-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:all 0.3s}
@@ -152,15 +152,15 @@ const text=`Untuk Ayangg, Andrea Nadine ❤️
 
 Selamat ulang tahun yang ke-20, Ayangg.
 
-Hari ini adalah hari yang sangat spesial karena hari ini adalah hari lahir seseorang putri kecil yang begitu berarti dalam hidupku. Seseorang yang selama dua tahun terakhir telah mengisi hari-hariku dengan tawa, kebahagiaan, dan cinta yang tulus.
+Hari ini adalah hari yang sangat spesial karena hari ini adalah hari lahir seseorang putri kecil yang begitu berarti dalam hidupku. Seseorang yang selama dua tahun terakhir telah mengisi hari-hariku dengan kebahagiaan dan cinta yang tulus.
 
-Di hari ulang tahunmu ini, aku ingin mengucapkan terima kasih untuk semua hal yang sudah kamu berikan kepadaku. Terima kasih karena telah hadir dalam hidupku. Terima kasih karena telah menjadi tempat terbaik untuk bersandar dan berbagi setiap kisah.
+Di hari ulang tahunmu ini, aku ingin mengucapkan terima kasih untuk semua hal yang sudah kamu berikan kepadaku. Terima kasih karena telah hadir dalam hidupku. Terima kasih karena telah menjadi tempat terbaik untuk berbagi suka dan duka.
 
 Aku bersyukur kepada Tuhan karena telah mempertemukanku denganmu. Dari sekian banyak orang di dunia ini, aku merasa beruntung karena bisa mengenalmu, mencintaimu, dan berjalan bersamamu hingga sejauh ini.
 
-Ayangg, aku berharap di usia yang baru ini kamu selalu diberikan kesehatan, kebahagiaan, kekuatan, dan keberhasilan dalam setiap langkah yang kamu ambil. Semoga semua impian, harapan, dan cita-cita kamu menjadi kenyataan.
+Ayangg, aku berharap di usia yang baru ini kamu selalu diberikan kesehatan, kebahagiaan, kekuatan, dan keberhasilan dalam setiap langkah yang kamu ambil. Semoga semua impian, harapan, dan cita-cita kamu dapat terwujud dengan indah.
 
-Aku juga ingin kamu tahu bahwa kehadiranmu sangat berarti bagiku. Senyummu, perhatianmu, cara kamu peduli, dan semua hal kecil yang kamu lakukan sering kali menjadi sesuatu yang membuat hariku terasa lebih bermakna dan penuh warna.
+Aku juga ingin kamu tahu bahwa kehadiranmu sangat berarti bagiku. Senyummu, perhatianmu, cara kamu peduli, dan semua hal kecil yang kamu lakukan sering kali menjadi sesuatu yang membuat hariku terasa lebih bermakna.
 
 Terima kasih karena sudah hadir dalam hidupku selama dua tahun terakhir. Aku bersyukur karena dari sekian banyak kemungkinan di dunia ini, aku dipertemukan dengan seseorang sebaik dan seistimewa dirimu.
 
@@ -208,7 +208,7 @@ function initSliderNav() {
 }
 
 function updateSlider() {
-  sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+  sliderWrapper.style.transform = `translateX(-${currentSlide * (100 + 4.76)}%)`;
   
   document.querySelectorAll('.slider-dot').forEach((dot, i) => {
     dot.classList.toggle('active', i === currentSlide);
@@ -277,7 +277,7 @@ sliderContainer.addEventListener('mousedown', (e) => {
 sliderContainer.addEventListener('mousemove', (e) => {
   if (!isDragging) return;
   const diff = touchStartX - e.clientX;
-  sliderWrapper.style.transform = `translateX(calc(-${currentSlide * 100}% - ${diff}px))`;
+  sliderWrapper.style.transform = `translateX(calc(-${currentSlide * (100 + 4.76)}% - ${diff}px))`;
 }, false);
 
 sliderContainer.addEventListener('mouseup', (e) => {
