@@ -136,7 +136,7 @@ Aku sayang kamu, hari ini, besok, dan selama Tuhan masih mengizinkan aku untuk m
 
 Dengan penuh cinta,
 
-Anggut ❤️
+Anggut 🤍
 
 Selamat ulang tahun yang ke-20, Cantikuu🎊🎉🥳🥰💞💖.
 `;
