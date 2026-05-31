@@ -18,7 +18,7 @@ body{background:#0b1020;color:#fff;overflow-x:hidden}
 .card{background:rgba(255,255,255,.08);backdrop-filter:blur(15px);padding:35px;border-radius:28px;width:min(90%,420px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
 input{width:100%;padding:14px;border:none;border-radius:14px;margin:10px 0}
 button{border:none;padding:14px 28px;border-radius:999px;background:#fff;color:#111;font-weight:700;cursor:pointer}
-.hero{height:100vh;background:url('cover.jpg') center/cover;display:flex;align-items:center;justify-content:center}
+.hero{height:100vh;background:linear-gradient(135deg,#0b1020,#1b1f3a);display:flex;align-items:center;justify-content:center}
 .overlay{background:rgba(0,0,0,.55);padding:40px;border-radius:30px;text-align:center}
 h1{font-size:clamp(2rem,5vw,4rem)}
 .section{padding:80px 20px;max-width:1200px;margin:auto}
@@ -32,12 +32,9 @@ h1{font-size:clamp(2rem,5vw,4rem)}
 .letter{display:none;background:white;color:#111;padding:30px;border-radius:24px;max-width:850px;margin:25px auto;line-height:1.9}
 .timeline{display:grid;gap:20px}
 .step{background:rgba(255,255,255,.08);padding:20px;border-radius:18px}
-footer{padding:120px 20px;text-align:center;background:url('ending.jpg') center/cover}
+footer{padding:120px 20px;text-align:center;background:linear-gradient(135deg,#432c52,#1b1f3a)}
 .heart{position:fixed;top:-10px;animation:fall linear forwards}
-@keyframes fall{to{transform:translateY(110vh)
- {
-    flex-direction:column;
-}}
+@keyframes fall{to{transform:translateY(110vh)}}
 </style>
 </head>
 <body>
@@ -72,14 +69,12 @@ footer{padding:120px 20px;text-align:center;background:url('ending.jpg') center/
 <section class="section">
 <h2>📸 Kenangan Kita</h2><br>
 <div class="slider">
-<img src="<img width="3072" height="4080" alt="1000420980" src="https://github.com/user-attachments/assets/3041bcbe-69d3-4953-9074-acc49fb48329" />
-"><img src="<img width="2464" height="3280" alt="1000345774" src="https://github.com/user-attachments/assets/0b9eeb7a-db49-41dd-83ef-96e36196aba1" />
-"><img src="<img width="2464" height="3280" alt="1000006791" src="https://github.com/user-attachments/assets/1b42c70e-8eb0-4f35-bf51-2faea3625d6a" />
-">
-<img src="<img width="1080" height="1920" alt="f2b68b44-2fd0-4707-9aa2-286a8b3e8ab1-1_all_717" src="https://github.com/user-attachments/assets/57d7073f-6442-40be-90b4-d488dffc4d1c" />
-"><img src="<img width="3112" height="4192" alt="f2b68b44-2fd0-4707-9aa2-286a8b3e8ab1-1_all_1040" src="https://github.com/user-attachments/assets/1d4b194e-d0c7-4a84-b161-177242c46c60" />
-"><img src="<img width="2160" height="3840" alt="f2b68b44-2fd0-4707-9aa2-286a8b3e8ab1-1_all_1095" src="https://github.com/user-attachments/assets/0f7bf675-03f1-4c43-b354-1626196a8f99" />
-">
+<img src="https://github.com/user-attachments/assets/3041bcbe-69d3-4953-9074-acc49fb48329" />
+<img src="https://github.com/user-attachments/assets/0b9eeb7a-db49-41dd-83ef-96e36196aba1" />
+<img src="https://github.com/user-attachments/assets/1b42c70e-8eb0-4f35-bf51-2faea3625d6a" />
+<img src="https://github.com/user-attachments/assets/57d7073f-6442-40be-90b4-d488dffc4d1c" />
+<img src="https://github.com/user-attachments/assets/1d4b194e-d0c7-4a84-b161-177242c46c60" />
+<img src="https://github.com/user-attachments/assets/0f7bf675-03f1-4c43-b354-1626196a8f99" />
 </div>
 </section>
 
@@ -91,8 +86,6 @@ footer{padding:120px 20px;text-align:center;background:url('ending.jpg') center/
 <div class="step">🤝 Dua tahun saling mendukung dan bertumbuh bersama.</div>
 </div>
 </section>
-
-
 
 <section class="section envelope-wrap">
 <h2>📬 Surat Rahasia</h2><br>
@@ -110,24 +103,22 @@ footer{padding:120px 20px;text-align:center;background:url('ending.jpg') center/
 </footer>
 </div>
 
-<audio autoplay loop><source src="music.mp3" type="audio/mpeg"></audio>
-
 <script>
 const text=`Untuk Ayangg, Andrea Nadine ❤️
 
 Selamat ulang tahun yang ke-20, Ayangg.
 
-Hari ini adalah hari yang sangat spesial karena hari ini adalah hari lahir seseorang putri kecil yang begitu berarti dalam hidupku. Seseorang yang selama dua tahun terakhir telah mengisi hari-hariku dengan kebahagiaan, tawa, cerita, dan begitu banyak kenangan yang tidak akan pernah bisa aku lupakan.
+Hari ini adalah hari yang sangat spesial karena hari ini adalah hari lahir seseorang putri kecil yang begitu berarti dalam hidupku. Seseorang yang selama dua tahun terakhir telah mengisi hari-hariku dengan kebahagiaan, tawa, dan cerita indah.
 
-Di hari ulang tahunmu ini, aku ingin mengucapkan terima kasih untuk semua hal yang sudah kamu berikan kepadaku. Terima kasih karena telah hadir dalam hidupku. Terima kasih karena telah menjadi tempatku bercerita, berbagi tawa, berbagi keluh kesah, dan menjadi salah satu alasan terbesar mengapa aku selalu bersemangat menjalani hari.
+Di hari ulang tahunmu ini, aku ingin mengucapkan terima kasih untuk semua hal yang sudah kamu berikan kepadaku. Terima kasih karena telah hadir dalam hidupku. Terima kasih karena telah menjadi tempat aku bersandar, tempat aku menemukan kedamaian, dan tempat aku bisa menjadi diri sendiri.
 
-Aku bersyukur kepada Tuhan karena telah mempertemukanku denganmu. Dari sekian banyak orang di dunia ini, aku merasa beruntung karena bisa mengenalmu, mencintaimu, dan berjalan bersamamu hingga sejauh ini. Dua tahun yang kita lalui mungkin tidak selalu sempurna, tetapi setiap momen yang kita lewati bersama memiliki tempat yang sangat berharga di hatiku.
+Aku bersyukur kepada Tuhan karena telah mempertemukanku denganmu. Dari sekian banyak orang di dunia ini, aku merasa beruntung karena bisa mengenalmu, mencintaimu, dan berjalan bersamamu hingga sejauh ini.
 
-Ayangg, aku berharap di usia yang baru ini kamu selalu diberikan kesehatan, kebahagiaan, kekuatan, dan keberhasilan dalam setiap langkah yang kamu ambil. Semoga semua impian, harapan, dan cita-cita yang kamu simpan perlahan menjadi kenyataan. Semoga setiap hari yang kamu jalani dipenuhi dengan alasan untuk tersenyum dan merasa bahagia.
+Ayangg, aku berharap di usia yang baru ini kamu selalu diberikan kesehatan, kebahagiaan, kekuatan, dan keberhasilan dalam setiap langkah yang kamu ambil. Semoga semua impian, harapan, dan cita-cita yang kamu miliki tercapai dengan mudah dan membuat hidupmu semakin berwarna.
 
-Aku juga ingin kamu tahu bahwa kehadiranmu sangat berarti bagiku. Senyummu, perhatianmu, cara kamu peduli, dan semua hal kecil yang kamu lakukan sering kali menjadi sesuatu yang membuat hariku terasa lebih baik. Mungkin aku tidak selalu pandai mengungkapkannya, tetapi aku benar-benar menghargai dan mensyukuri setiap hal yang ada dalam dirimu.
+Aku juga ingin kamu tahu bahwa kehadiranmu sangat berarti bagiku. Senyummu, perhatianmu, cara kamu peduli, dan semua hal kecil yang kamu lakukan sering kali menjadi sesuatu yang membuat hariku terasa lebih bermakna dan lebih indah.
 
-Terima kasih karena sudah hadir dalam hidupku selama dua tahun terakhir. Aku bersyukur karena dari sekian banyak kemungkinan di dunia ini, aku dipertemukan dengan seseorang sebaik dan seistimewa dirimu
+Terima kasih karena sudah hadir dalam hidupku selama dua tahun terakhir. Aku bersyukur karena dari sekian banyak kemungkinan di dunia ini, aku dipertemukan dengan seseorang sebaik dan seistimewa dirimu.
 
 Terima kasih karena sudah bertahan bersamaku selama ini. Terima kasih karena sudah menerima segala kekuranganku. Terima kasih karena tetap memilih untuk berjalan bersamaku hingga hari ini.
 
@@ -145,9 +136,7 @@ Dengan penuh cinta,
 
 Anggut ❤️
 
-
 Selamat ulang tahun yang ke-20, Cantikuu🎊🎉🥳🥰💞💖.
-
 `;
 
 function login(){
@@ -167,11 +156,8 @@ function login(){
 }
 
 function showMain(){
-
  document.getElementById('gift').style.display = 'none';
  document.getElementById('main').style.display = 'flex';
-
-}
 }
 
 function openLetter(){
