@@ -1,4 +1,4 @@
-💖🎉🎊SELAMAT ULANG TAHUN SAYANGG 🎊🎉
+💖🎉🎊SELAMAT ULANG TAHUN SAYANGG 🎊🎉🩷
 <html lang="id">
 <head>
 <meta charset="UTF-8">
@@ -89,7 +89,7 @@ footer{padding:120px 20px;text-align:center;background:linear-gradient(135deg,#4
 
 <section class="section envelope-wrap">
 <h2>📬 Surat Rahasia</h2><br>
-<div class="envelope" onclick="openLetter()"></div>
+<div class="💌" onclick="openLetter()"></div>
 <div class="letter" id="letter">
 <h3>Untuk Ayanggkuu🥰💖</h3><br>
 <p id="typing"></p>
