@@ -39,10 +39,10 @@ h1{font-size:clamp(2rem,5vw,4rem)}
 
 /* Slider styles */
 .slider-container{position:relative;width:min(90%,420px);height:400px;margin:auto;border-radius:22px;overflow:hidden;touch-action:pan-y}
-.slider-wrapper{display:flex;height:100%;transition:transform 0.3s ease-out;gap:20px;padding:0 10px}
+.slider-wrapper{display:flex;height:100%;transition:transform 0.3s ease-out;gap:0;padding:0}
 .slider-wrapper.dragging{transition:none}
-.slider img{width:100%;height:100%;object-fit:cover;border-radius:22px;flex-shrink:0;opacity:0;transition:opacity 0.3s ease-out;margin-right:20px}
-.slider img:first-child{opacity:1}
+.slider img{width:100%;height:100%;object-fit:cover;border-radius:22px;flex-shrink:0;opacity:0;transition:opacity 0.3s ease-out;margin:0;display:none}
+.slider img.active{opacity:1;display:block}
 .slider-nav{display:flex;justify-content:center;gap:10px;margin-top:20px}
 .slider-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:all 0.3s}
 .slider-dot.active{background:#fff;width:30px;border-radius:5px}
@@ -117,7 +117,7 @@ footer{padding:120px 20px;text-align:center;background:linear-gradient(135deg,#4
 <div class="slider-container" id="sliderContainer">
 <button class="slider-arrow prev" onclick="prevSlide()">❮</button>
 <div class="slider-wrapper" id="sliderWrapper">
-<img src="https://github.com/user-attachments/assets/3041bcbe-69d3-4953-9074-acc49fb48329" />
+<img class="active" src="https://github.com/user-attachments/assets/3041bcbe-69d3-4953-9074-acc49fb48329" />
 <img src="https://github.com/user-attachments/assets/0b9eeb7a-db49-41dd-83ef-96e36196aba1" />
 <img src="https://github.com/user-attachments/assets/1b42c70e-8eb0-4f35-bf51-2faea3625d6a" />
 <img src="https://github.com/user-attachments/assets/57d7073f-6442-40be-90b4-d488dffc4d1c" />
@@ -152,13 +152,13 @@ const text=`Untuk Ayangg, Andrea Nadine ❤️
 
 Selamat ulang tahun yang ke-20, Ayangg.
 
-Hari ini adalah hari yang sangat spesial karena hari ini adalah hari lahir seseorang putri kecil yang begitu berarti dalam hidupku. Seseorang yang selama dua tahun terakhir telah mengisi hari-hariku dengan kebahagiaan dan cinta yang tulus.
+Hari ini adalah hari yang sangat spesial karena hari ini adalah hari lahir seseorang putri kecil yang begitu berarti dalam hidupku. Seseorang yang selama dua tahun terakhir telah mengisi hari-hariku dengan penuh warna dan cerita indah.
 
-Di hari ulang tahunmu ini, aku ingin mengucapkan terima kasih untuk semua hal yang sudah kamu berikan kepadaku. Terima kasih karena telah hadir dalam hidupku. Terima kasih karena telah menjadi tempat terbaik untuk berbagi suka dan duka.
+Di hari ulang tahunmu ini, aku ingin mengucapkan terima kasih untuk semua hal yang sudah kamu berikan kepadaku. Terima kasih karena telah hadir dalam hidupku. Terima kasih karena telah menjadi tempat aku bisa bersandar, tersenyum, dan tumbuh.
 
 Aku bersyukur kepada Tuhan karena telah mempertemukanku denganmu. Dari sekian banyak orang di dunia ini, aku merasa beruntung karena bisa mengenalmu, mencintaimu, dan berjalan bersamamu hingga sejauh ini.
 
-Ayangg, aku berharap di usia yang baru ini kamu selalu diberikan kesehatan, kebahagiaan, kekuatan, dan keberhasilan dalam setiap langkah yang kamu ambil. Semoga semua impian, harapan, dan cita-cita kamu dapat terwujud dengan indah.
+Ayangg, aku berharap di usia yang baru ini kamu selalu diberikan kesehatan, kebahagiaan, kekuatan, dan keberhasilan dalam setiap langkah yang kamu ambil. Semoga semua impian, harapan, dan cita-cita kamu terwujud dengan indah.
 
 Aku juga ingin kamu tahu bahwa kehadiranmu sangat berarti bagiku. Senyummu, perhatianmu, cara kamu peduli, dan semua hal kecil yang kamu lakukan sering kali menjadi sesuatu yang membuat hariku terasa lebih bermakna.
 
@@ -208,18 +208,21 @@ function initSliderNav() {
 }
 
 function updateSlider() {
-  sliderWrapper.style.transform = `translateX(-${currentSlide * (100 + 4.76)}%)`;
+  // Update semua image untuk menampilkan/sembunyikan dengan class
+  document.querySelectorAll('.slider img').forEach((img, i) => {
+    if (i === currentSlide) {
+      img.classList.add('active');
+      img.style.opacity = '1';
+      img.style.display = 'block';
+    } else {
+      img.classList.remove('active');
+      img.style.opacity = '0';
+      img.style.display = 'none';
+    }
+  });
   
   document.querySelectorAll('.slider-dot').forEach((dot, i) => {
     dot.classList.toggle('active', i === currentSlide);
-  });
-  
-  document.querySelectorAll('.slider img').forEach((img, i) => {
-    if (i === currentSlide) {
-      img.style.opacity = '1';
-    } else {
-      img.style.opacity = '0';
-    }
   });
   
   document.getElementById('sliderIndex').textContent = currentSlide + 1;
@@ -276,8 +279,6 @@ sliderContainer.addEventListener('mousedown', (e) => {
 
 sliderContainer.addEventListener('mousemove', (e) => {
   if (!isDragging) return;
-  const diff = touchStartX - e.clientX;
-  sliderWrapper.style.transform = `translateX(calc(-${currentSlide * (100 + 4.76)}% - ${diff}px))`;
 }, false);
 
 sliderContainer.addEventListener('mouseup', (e) => {
