@@ -22,13 +22,15 @@ button{border:none;padding:14px 28px;border-radius:999px;background:#fff;color:#
 .overlay{background:rgba(0,0,0,.55);padding:40px;border-radius:30px;text-align:center}
 h1{font-size:clamp(2rem,5vw,4rem)}
 .section{padding:80px 20px;max-width:1200px;margin:auto}
-.slider{display:flex;gap:20px;overflow:auto;scroll-behavior:smooth}
+.slider{display:flex;flex-direction:column;gap:20px;align-items:center;scroll-behavior:smooth}
 .slider img{width:280px;height:380px;object-fit:cover;border-radius:22px;flex:none}
 .reason-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
 .reason{background:rgba(255,255,255,.08);padding:18px;border-radius:18px}
 .envelope-wrap{text-align:center}
-.envelope{width:260px;height:170px;background:#f8d7da;margin:auto;position:relative;cursor:pointer;border-radius:0 0 12px 12px}
+.envelope{width:260px;height:170px;background:#f8d7da;margin:auto;position:relative;cursor:pointer;border-radius:0 0 12px 12px;display:none}
 .envelope:before{content:'';position:absolute;border-left:130px solid transparent;border-right:130px solid transparent;border-top:90px solid #f3a9b3;top:0}
+.envelope-button{font-size:80px;cursor:pointer;transition:transform 0.3s ease}
+.envelope-button:hover{transform:scale(1.1)}
 .letter{display:none;background:white;color:#111;padding:30px;border-radius:24px;max-width:850px;margin:25px auto;line-height:1.9}
 .timeline{display:grid;gap:20px}
 .step{background:rgba(255,255,255,.08);padding:20px;border-radius:18px}
@@ -89,7 +91,7 @@ footer{padding:120px 20px;text-align:center;background:linear-gradient(135deg,#4
 
 <section class="section envelope-wrap">
 <h2>📬 Surat Rahasia</h2><br>
-<div class="envelope" onclick="openLetter()"></div>
+<div class="envelope-button" onclick="openLetter()">💌</div>
 <div class="letter" id="letter">
 <h3>Untuk Ayanggkuu🥰💖</h3><br>
 <p id="typing"></p>
@@ -108,17 +110,17 @@ const text=`Untuk Ayangg, Andrea Nadine ❤️
 
 Selamat ulang tahun yang ke-20, Ayangg.
 
-Hari ini adalah hari yang sangat spesial karena hari ini adalah hari lahir seseorang putri kecil yang begitu berarti dalam hidupku. Seseorang yang selama dua tahun terakhir telah mengisi hari-hariku dengan kebahagiaan, tawa, dan cerita indah.
+Hari ini adalah hari yang sangat spesial karena hari ini adalah hari lahir seseorang putri kecil yang begitu berarti dalam hidupku. Seseorang yang selama dua tahun terakhir telah mengisi hari-hariku d[...]
 
-Di hari ulang tahunmu ini, aku ingin mengucapkan terima kasih untuk semua hal yang sudah kamu berikan kepadaku. Terima kasih karena telah hadir dalam hidupku. Terima kasih karena telah menjadi tempat aku bersandar, tempat aku menemukan kedamaian, dan tempat aku bisa menjadi diri sendiri.
+Di hari ulang tahunmu ini, aku ingin mengucapkan terima kasih untuk semua hal yang sudah kamu berikan kepadaku. Terima kasih karena telah hadir dalam hidupku. Terima kasih karena telah menjadi tempat [...]
 
-Aku bersyukur kepada Tuhan karena telah mempertemukanku denganmu. Dari sekian banyak orang di dunia ini, aku merasa beruntung karena bisa mengenalmu, mencintaimu, dan berjalan bersamamu hingga sejauh ini.
+Aku bersyukur kepada Tuhan karena telah mempertemukanku denganmu. Dari sekian banyak orang di dunia ini, aku merasa beruntung karena bisa mengenalmu, mencintaimu, dan berjalan bersamamu hingga sejauh [...]
 
-Ayangg, aku berharap di usia yang baru ini kamu selalu diberikan kesehatan, kebahagiaan, kekuatan, dan keberhasilan dalam setiap langkah yang kamu ambil. Semoga semua impian, harapan, dan cita-cita yang kamu miliki tercapai dengan mudah dan membuat hidupmu semakin berwarna.
+Ayangg, aku berharap di usia yang baru ini kamu selalu diberikan kesehatan, kebahagiaan, kekuatan, dan keberhasilan dalam setiap langkah yang kamu ambil. Semoga semua impian, harapan, dan cita-cita ya[...]
 
-Aku juga ingin kamu tahu bahwa kehadiranmu sangat berarti bagiku. Senyummu, perhatianmu, cara kamu peduli, dan semua hal kecil yang kamu lakukan sering kali menjadi sesuatu yang membuat hariku terasa lebih bermakna dan lebih indah.
+Aku juga ingin kamu tahu bahwa kehadiranmu sangat berarti bagiku. Senyummu, perhatianmu, cara kamu peduli, dan semua hal kecil yang kamu lakukan sering kali menjadi sesuatu yang membuat hariku terasa [...]
 
-Terima kasih karena sudah hadir dalam hidupku selama dua tahun terakhir. Aku bersyukur karena dari sekian banyak kemungkinan di dunia ini, aku dipertemukan dengan seseorang sebaik dan seistimewa dirimu.
+Terima kasih karena sudah hadir dalam hidupku selama dua tahun terakhir. Aku bersyukur karena dari sekian banyak kemungkinan di dunia ini, aku dipertemukan dengan seseorang sebaik dan seistimewa dirim[...]
 
 Terima kasih karena sudah bertahan bersamaku selama ini. Terima kasih karena sudah menerima segala kekuranganku. Terima kasih karena tetap memilih untuk berjalan bersamaku hingga hari ini.
 
