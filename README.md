@@ -102,15 +102,6 @@ footer{padding:120px 20px;text-align:center;background:linear-gradient(135deg,#4
 <div class="slider-nav" id="sliderNav"></div>
 </section>
 
-<section class="section">
-<h2>⏳ Perjalanan Kita</h2><br>
-<div class="timeline">
-<div class="step">❤️ banyak hal.</div>
-<div class="step">✨ Momen-momen kecil yang menjadi kenangan besar.</div>
-<div class="step">🤝 Dua tahun saling mendukung dan bertumbuh bersama.</div>
-</div>
-</section>
-
 <section class="section envelope-wrap">
 <h2>📬 Surat Rahasia</h2><br>
 <div class="envelope-button" onclick="openLetter()">💌</div>
