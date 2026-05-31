@@ -79,8 +79,8 @@ footer{padding:120px 20px;text-align:center;background:linear-gradient(135deg,#4
 <div id="main" class="page" style="display:none;flex-direction:column">
 <section class="hero">
 <div class="overlay">
-<h1>Selamat Ulang Tahun Cintakuu Sayanggkuu🎉🎊💕💞💖</h1>
-<p> Ada siapin sesuatu ini buat ayangg semoga ayang suka yaa.. </p>
+<h1>🎊🎊🎉🥳💖💞Selamat Ulang Tahun Cintakuu Sayanggkuu🎉🎊🥳💕💞💖</h1>
+<p> Aku siapin sesuatu ini buat ayangg semoga ayang suka yaa.. </p>
 </div>
 </section>
 
@@ -105,7 +105,7 @@ footer{padding:120px 20px;text-align:center;background:linear-gradient(135deg,#4
 <section class="section">
 <h2>⏳ Perjalanan Kita</h2><br>
 <div class="timeline">
-<div class="step">❤️ Awal perkenalan yang mengubah banyak hal.</div>
+<div class="step">❤️ banyak hal.</div>
 <div class="step">✨ Momen-momen kecil yang menjadi kenangan besar.</div>
 <div class="step">🤝 Dua tahun saling mendukung dan bertumbuh bersama.</div>
 </div>
