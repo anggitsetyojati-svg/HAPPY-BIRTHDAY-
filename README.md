@@ -37,7 +37,7 @@ footer{padding:120px 20px;text-align:center;background:url('ending.jpg') center/
 @keyframes fall{to{transform:translateY(110vh)
  {
     flex-direction:column;
-}}}
+}}
 </style>
 </head>
 <body>
