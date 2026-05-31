@@ -27,11 +27,12 @@ h1{font-size:clamp(2rem,5vw,4rem)}
 .slider-container{position:relative;width:min(90%,420px);height:400px;margin:auto;border-radius:22px;overflow:hidden;touch-action:pan-y}
 .slider-wrapper{display:flex;height:100%;transition:transform 0.3s ease-out}
 .slider-wrapper.dragging{transition:none}
-.slider img{width:100%;height:100%;object-fit:cover;border-radius:22px;flex-shrink:0}
+.slider img{width:100%;height:100%;object-fit:cover;border-radius:22px;flex-shrink:0;opacity:1;transition:opacity 0.3s ease-out}
+.slider img.fade-out{opacity:0}
 .slider-nav{display:flex;justify-content:center;gap:10px;margin-top:20px}
 .slider-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:all 0.3s}
 .slider-dot.active{background:#fff;width:30px;border-radius:5px}
-.slider-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.3);border:none;color:#fff;font-size:24px;padding:10px 15px;cursor:pointer;border-radius:5px;transition:background 0.3s;z-index:10}
+.slider-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.3);border:none;color:#fff;font-size:24px;padding:10px 15px;cursor:pointer;border-radius:5px;transition:background 0.3s}
 .slider-arrow:hover{background:rgba(255,255,255,.6)}
 .slider-arrow.prev{left:10px}
 .slider-arrow.next{right:10px}
@@ -50,6 +51,8 @@ h1{font-size:clamp(2rem,5vw,4rem)}
 footer{padding:120px 20px;text-align:center;background:linear-gradient(135deg,#432c52,#1b1f3a)}
 .heart{position:fixed;top:-10px;animation:fall linear forwards}
 @keyframes fall{to{transform:translateY(110vh)}}
+
+.gift-emoji{font-size:120px;margin-bottom:20px}
 </style>
 </head>
 <body>
@@ -68,7 +71,7 @@ footer{padding:120px 20px;text-align:center;background:linear-gradient(135deg,#4
 </div>
 
 <div id="gift" class="page center">
-<h1>🎁</h1>
+<div class="gift-emoji">🎁</div>
 <h2>Box Misterius❤️‍🔥</h2><br>
 <button onclick="showMain()">Klik Untuk Membuka</button>
 </div>
@@ -129,15 +132,15 @@ const text=`Untuk Ayangg, Andrea Nadine ❤️
 
 Selamat ulang tahun yang ke-20, Ayangg.
 
-Hari ini adalah hari yang sangat spesial karena hari ini adalah hari lahir seseorang putri kecil yang begitu berarti dalam hidupku. Seseorang yang selama dua tahun terakhir telah mengisi hari-hariku dengan kebahagiaan dan cinta.
+Hari ini adalah hari yang sangat spesial karena hari ini adalah hari lahir seseorang putri kecil yang begitu berarti dalam hidupku. Seseorang yang selama dua tahun terakhir telah mengisi hari-hariku dengan kebahagiaan, tawa, dan makna yang mendalam.
 
-Di hari ulang tahunmu ini, aku ingin mengucapkan terima kasih untuk semua hal yang sudah kamu berikan kepadaku. Terima kasih karena telah hadir dalam hidupku. Terima kasih karena telah menjadi tempat pelukanku di saat aku merasa lelah.
+Di hari ulang tahunmu ini, aku ingin mengucapkan terima kasih untuk semua hal yang sudah kamu berikan kepadaku. Terima kasih karena telah hadir dalam hidupku. Terima kasih karena telah menjadi tempat aku bisa menjadi diri sendiri tanpa harus menyembunyikan apapun.
 
 Aku bersyukur kepada Tuhan karena telah mempertemukanku denganmu. Dari sekian banyak orang di dunia ini, aku merasa beruntung karena bisa mengenalmu, mencintaimu, dan berjalan bersamamu hingga sejauh ini.
 
-Ayangg, aku berharap di usia yang baru ini kamu selalu diberikan kesehatan, kebahagiaan, kekuatan, dan keberhasilan dalam setiap langkah yang kamu ambil. Semoga semua impian, harapan, dan cita-cita yang kamu miliki menjadi kenyataan.
+Ayangg, aku berharap di usia yang baru ini kamu selalu diberikan kesehatan, kebahagiaan, kekuatan, dan keberhasilan dalam setiap langkah yang kamu ambil. Semoga semua impian, harapan, dan cita-cita kamu menjadi kenyataan.
 
-Aku juga ingin kamu tahu bahwa kehadiranmu sangat berarti bagiku. Senyummu, perhatianmu, cara kamu peduli, dan semua hal kecil yang kamu lakukan sering kali menjadi sesuatu yang membuat hariku terasa lebih bermakna.
+Aku juga ingin kamu tahu bahwa kehadiranmu sangat berarti bagiku. Senyummu, perhatianmu, cara kamu peduli, dan semua hal kecil yang kamu lakukan sering kali menjadi sesuatu yang membuat hariku terasa lebih berwarna dan bermakna.
 
 Terima kasih karena sudah hadir dalam hidupku selama dua tahun terakhir. Aku bersyukur karena dari sekian banyak kemungkinan di dunia ini, aku dipertemukan dengan seseorang sebaik dan seistimewa dirimu.
 
@@ -187,6 +190,9 @@ function updateSlider() {
   sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
   document.querySelectorAll('.slider-dot').forEach((dot, i) => {
     dot.classList.toggle('active', i === currentSlide);
+  });
+  document.querySelectorAll('.slider img').forEach((img, i) => {
+    img.classList.toggle('fade-out', i !== currentSlide);
   });
   document.getElementById('sliderIndex').textContent = currentSlide + 1;
 }
