@@ -23,12 +23,26 @@ button{border:none;padding:14px 28px;border-radius:999px;background:#fff;color:#
 h1{font-size:clamp(2rem,5vw,4rem)}
 .section{padding:80px 20px;max-width:1200px;margin:auto}
 
+/* Countdown styles */
+.countdown-page{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:100;background:linear-gradient(135deg,#0b1020,#1b1f3a,#432c52)}
+.countdown-page.active{display:flex}
+.countdown-container{text-align:center;position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.stars{position:absolute;width:100%;height:100%;overflow:hidden}
+.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:twinkle 3s infinite}
+@keyframes twinkle{0%,100%{opacity:.3}50%{opacity:1}}
+@keyframes starMove{0%{transform:translateY(0)}100%{transform:translateY(-100vh)}}
+.star-moving{animation:starMove 20s linear infinite}
+.countdown-number{font-size:150px;font-weight:700;z-index:10;animation:popOut 0.8s ease-out}
+.emoji-particle{position:absolute;font-size:60px;animation:floatAway 1.2s ease-out forwards}
+@keyframes popOut{0%{transform:scale(0);opacity:1}100%{transform:scale(1);opacity:0.3}}
+@keyframes floatAway{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0.5)}}
+
 /* Slider styles */
 .slider-container{position:relative;width:min(90%,420px);height:400px;margin:auto;border-radius:22px;overflow:hidden;touch-action:pan-y}
 .slider-wrapper{display:flex;height:100%;transition:transform 0.3s ease-out}
 .slider-wrapper.dragging{transition:none}
-.slider img{width:100%;height:100%;object-fit:cover;border-radius:22px;flex-shrink:0;opacity:1;transition:opacity 0.3s ease-out}
-.slider img.fade-out{opacity:0}
+.slider img{width:100%;height:100%;object-fit:cover;border-radius:22px;flex-shrink:0;opacity:0;transition:opacity 0.3s ease-out}
+.slider img:first-child{opacity:1}
 .slider-nav{display:flex;justify-content:center;gap:10px;margin-top:20px}
 .slider-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:all 0.3s}
 .slider-dot.active{background:#fff;width:30px;border-radius:5px}
@@ -53,6 +67,11 @@ footer{padding:120px 20px;text-align:center;background:linear-gradient(135deg,#4
 @keyframes fall{to{transform:translateY(110vh)}}
 
 .gift-emoji{font-size:120px;margin-bottom:20px}
+
+/* Memories button */
+.memories-section{padding:40px 20px;text-align:center}
+.memories-btn{font-size:60px;cursor:pointer;transition:transform 0.3s ease}
+.memories-btn:hover{transform:scale(1.15)}
 </style>
 </head>
 <body>
@@ -73,7 +92,14 @@ footer{padding:120px 20px;text-align:center;background:linear-gradient(135deg,#4
 <div id="gift" class="page center">
 <div class="gift-emoji">🎁</div>
 <h2>Box Misterius❤️‍🔥</h2><br>
-<button onclick="showMain()">Klik Untuk Membuka</button>
+<button onclick="startCountdown()">Klik Untuk Membuka</button>
+</div>
+
+<div id="countdown" class="countdown-page">
+<div class="stars" id="starsContainer"></div>
+<div class="countdown-container">
+<div class="countdown-number" id="countdownNumber">3</div>
+</div>
 </div>
 
 <div id="main" class="page" style="display:none;flex-direction:column">
@@ -84,8 +110,10 @@ footer{padding:120px 20px;text-align:center;background:linear-gradient(135deg,#4
 </div>
 </section>
 
-<section class="section">
+<section class="memories-section">
 <h2>📸 Kenangan Kita</h2><br>
+<div class="memories-btn" onclick="toggleMemories()">📷 Klik untuk Melihat Kenangan</div>
+<div id="memoriesSlider" style="display:none;margin-top:30px;">
 <div class="slider-container" id="sliderContainer">
 <button class="slider-arrow prev" onclick="prevSlide()">❮</button>
 <div class="slider-wrapper" id="sliderWrapper">
@@ -100,6 +128,7 @@ footer{padding:120px 20px;text-align:center;background:linear-gradient(135deg,#4
 <div class="slider-counter"><span id="sliderIndex">1</span>/<span id="sliderTotal">6</span></div>
 </div>
 <div class="slider-nav" id="sliderNav"></div>
+</div>
 </section>
 
 <section class="section envelope-wrap">
@@ -123,15 +152,15 @@ const text=`Untuk Ayangg, Andrea Nadine ❤️
 
 Selamat ulang tahun yang ke-20, Ayangg.
 
-Hari ini adalah hari yang sangat spesial karena hari ini adalah hari lahir seseorang putri kecil yang begitu berarti dalam hidupku. Seseorang yang selama dua tahun terakhir telah mengisi hari-hariku dengan kebahagiaan, tawa, dan makna yang mendalam.
+Hari ini adalah hari yang sangat spesial karena hari ini adalah hari lahir seseorang putri kecil yang begitu berarti dalam hidupku. Seseorang yang selama dua tahun terakhir telah mengisi hari-hariku dengan tawa, kebahagiaan, dan cinta yang tulus.
 
-Di hari ulang tahunmu ini, aku ingin mengucapkan terima kasih untuk semua hal yang sudah kamu berikan kepadaku. Terima kasih karena telah hadir dalam hidupku. Terima kasih karena telah menjadi tempat aku bisa menjadi diri sendiri tanpa harus menyembunyikan apapun.
+Di hari ulang tahunmu ini, aku ingin mengucapkan terima kasih untuk semua hal yang sudah kamu berikan kepadaku. Terima kasih karena telah hadir dalam hidupku. Terima kasih karena telah menjadi tempat terbaik untuk bersandar dan berbagi setiap kisah.
 
 Aku bersyukur kepada Tuhan karena telah mempertemukanku denganmu. Dari sekian banyak orang di dunia ini, aku merasa beruntung karena bisa mengenalmu, mencintaimu, dan berjalan bersamamu hingga sejauh ini.
 
 Ayangg, aku berharap di usia yang baru ini kamu selalu diberikan kesehatan, kebahagiaan, kekuatan, dan keberhasilan dalam setiap langkah yang kamu ambil. Semoga semua impian, harapan, dan cita-cita kamu menjadi kenyataan.
 
-Aku juga ingin kamu tahu bahwa kehadiranmu sangat berarti bagiku. Senyummu, perhatianmu, cara kamu peduli, dan semua hal kecil yang kamu lakukan sering kali menjadi sesuatu yang membuat hariku terasa lebih berwarna dan bermakna.
+Aku juga ingin kamu tahu bahwa kehadiranmu sangat berarti bagiku. Senyummu, perhatianmu, cara kamu peduli, dan semua hal kecil yang kamu lakukan sering kali menjadi sesuatu yang membuat hariku terasa lebih bermakna dan penuh warna.
 
 Terima kasih karena sudah hadir dalam hidupku selama dua tahun terakhir. Aku bersyukur karena dari sekian banyak kemungkinan di dunia ini, aku dipertemukan dengan seseorang sebaik dan seistimewa dirimu.
 
@@ -168,6 +197,7 @@ const totalSlides = images.length;
 // Initialize slider nav
 function initSliderNav() {
   const sliderNav = document.getElementById('sliderNav');
+  sliderNav.innerHTML = '';
   for (let i = 0; i < totalSlides; i++) {
     const dot = document.createElement('div');
     dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
@@ -179,12 +209,19 @@ function initSliderNav() {
 
 function updateSlider() {
   sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+  
   document.querySelectorAll('.slider-dot').forEach((dot, i) => {
     dot.classList.toggle('active', i === currentSlide);
   });
+  
   document.querySelectorAll('.slider img').forEach((img, i) => {
-    img.classList.toggle('fade-out', i !== currentSlide);
+    if (i === currentSlide) {
+      img.style.opacity = '1';
+    } else {
+      img.style.opacity = '0';
+    }
   });
+  
   document.getElementById('sliderIndex').textContent = currentSlide + 1;
 }
 
@@ -225,6 +262,8 @@ function handleSwipe() {
     } else {
       prevSlide();
     }
+  } else {
+    updateSlider();
   }
 }
 
@@ -256,6 +295,79 @@ sliderContainer.addEventListener('mouseleave', () => {
   }
 }, false);
 
+// Countdown functionality
+function createStars() {
+  const container = document.getElementById('starsContainer');
+  container.innerHTML = '';
+  for (let i = 0; i < 100; i++) {
+    const star = document.createElement('div');
+    star.className = 'star star-moving';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDelay = Math.random() * 20 + 's';
+    container.appendChild(star);
+  }
+}
+
+function startCountdown() {
+  document.getElementById('gift').style.display = 'none';
+  document.getElementById('countdown').classList.add('active');
+  createStars();
+  
+  let count = 3;
+  const countdownNumber = document.getElementById('countdownNumber');
+  
+  const countdown = setInterval(() => {
+    const emojis = ['💕', '🎈'];
+    const container = document.getElementById('countdown').querySelector('.countdown-container');
+    
+    // Pecah angka menjadi emoji
+    for (let i = 0; i < 30; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'emoji-particle';
+      particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      const angle = (i / 30) * Math.PI * 2;
+      const distance = 200;
+      particle.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
+      particle.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
+      particle.style.left = '50%';
+      particle.style.top = '50%';
+      container.appendChild(particle);
+      setTimeout(() => particle.remove(), 1200);
+    }
+    
+    count--;
+    if (count >= 0) {
+      countdownNumber.textContent = count;
+      countdownNumber.style.animation = 'none';
+      setTimeout(() => {
+        countdownNumber.style.animation = 'popOut 0.8s ease-out';
+      }, 10);
+    } else {
+      clearInterval(countdown);
+      setTimeout(() => {
+        document.getElementById('countdown').classList.remove('active');
+        document.getElementById('main').style.display = 'flex';
+        initSliderNav();
+        updateSlider();
+      }, 800);
+    }
+  }, 1000);
+}
+
+function toggleMemories() {
+  const memoriesSlider = document.getElementById('memoriesSlider');
+  if (memoriesSlider.style.display === 'none') {
+    memoriesSlider.style.display = 'block';
+    if (document.querySelectorAll('.slider-dot').length === 0) {
+      initSliderNav();
+      updateSlider();
+    }
+  } else {
+    memoriesSlider.style.display = 'none';
+  }
+}
+
 function login(){
  let n = document.getElementById('nama').value.toLowerCase();
  let p = document.getElementById('pin').value;
@@ -270,12 +382,6 @@ function login(){
    document.getElementById('msg').innerText = 'Nama anda atau PIN salah';
 
  }
-}
-
-function showMain(){
- document.getElementById('gift').style.display = 'none';
- document.getElementById('main').style.display = 'flex';
- initSliderNav();
 }
 
 function openLetter(){
