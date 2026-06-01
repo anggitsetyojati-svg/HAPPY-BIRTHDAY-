@@ -36,12 +36,12 @@ h1{font-size:clamp(2rem,5vw,4rem)}
 /* Glowing heart */
 .glowing-heart{position:relative;font-size:200px;animation:heartPulse 1.5s ease-in-out infinite;filter:drop-shadow(0 0 20px #ff1493) drop-shadow(0 0 40px #ff1493) drop-shadow(0 0 60px #ff1493)}
 
-@keyframes heartPulse{0%,100%{transform:scale(1);filter:drop-shadow(0 0 20px #ff1493) drop-shadow(0 0 40px #ff1493) drop-shadow(0 0 60px #ff1493)}50%{transform:scale(1.1);filter:drop-shadow(0 0 30px #ff1493) drop-shadow(0 0 50px #ff1493) drop-shadow(0 0 80px #ff1493)}}
+@keyframes heartPulse{0%,100%{transform:scale(1);filter:drop-shadow(0 0 20px #ff1493) drop-shadow(0 0 40px #ff1493) drop-shadow(0 0 60px #ff1493)}50%{transform:scale(1.1);filter:drop-shadow(0 0 30px #ff1493) drop-shadow(0 0 60px #ff1493) drop-shadow(0 0 90px #ff1493)}}
 
-/* Particles */
-.particle-heart{position:absolute;font-size:40px;animation:particleFloat 2s ease-out forwards;z-index:5}
+/* Enhanced Particles */
+.particle-heart{position:absolute;font-size:40px;animation:particleFloat 2s ease-out forwards;z-index:5;filter:drop-shadow(0 0 10px currentColor);pointer-events:none}
 
-@keyframes particleFloat{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0.3)}}
+@keyframes particleFloat{0%{opacity:1;transform:translate(0,0) scale(1) rotate(0deg)}50%{opacity:0.8;transform:translate(calc(var(--tx)*0.5), calc(var(--ty)*0.5)) scale(0.8) rotate(180deg)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0.3) rotate(360deg)}}
 
 /* Slider styles */
 .slider-container{position:relative;width:min(90%,420px);height:400px;margin:auto;border-radius:22px;overflow:hidden;touch-action:pan-y}
@@ -52,7 +52,7 @@ h1{font-size:clamp(2rem,5vw,4rem)}
 .slider-nav{display:flex;justify-content:center;gap:10px;margin-top:20px}
 .slider-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:all 0.3s}
 .slider-dot.active{background:#fff;width:30px;border-radius:5px}
-.slider-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.3);border:none;color:#fff;font-size:24px;padding:10px 15px;cursor:pointer;border-radius:5px;transition:background 0.3s}
+.slider-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.3);border:none;color:#fff;font-size:24px;padding:10px 15px;cursor:pointer;border-radius:5px;transition:all 0.3s}
 .slider-arrow:hover{background:rgba(255,255,255,.6)}
 .slider-arrow.prev{left:10px}
 .slider-arrow.next{right:10px}
@@ -158,15 +158,15 @@ const text=`Untuk Ayangg, Andrea Nadine ❤️
 
 Selamat ulang tahun yang ke-20, Ayangg.
 
-Hari ini adalah hari yang sangat spesial karena hari ini adalah hari lahir seseorang putri kecil yang begitu berarti dalam hidupku. Seseorang yang selama dua tahun terakhir telah mengisi hari-hariku dengan warna-warni dan kebahagiaan.
+Hari ini adalah hari yang sangat spesial karena hari ini adalah hari lahir seseorang putri kecil yang begitu berarti dalam hidupku. Seseorang yang selama dua tahun terakhir telah mengisi hari-hariku dengan kebahagiaan, tawa, cinta, dan momen-momen indah yang tak terlupakan.
 
-Di hari ulang tahunmu ini, aku ingin mengucapkan terima kasih untuk semua hal yang sudah kamu berikan kepadaku. Terima kasih karena telah hadir dalam hidupku. Terima kasih karena telah menjadi tempat aku bisa berbagi suka dan duka.
+Di hari ulang tahunmu ini, aku ingin mengucapkan terima kasih untuk semua hal yang sudah kamu berikan kepadaku. Terima kasih karena telah hadir dalam hidupku. Terima kasih karena telah menjadi tempat aku berlabuh ketika badai datang.
 
-Aku bersyukur kepada Tuhan karena telah mempertemukanku denganmu. Dari sekian banyak orang di dunia ini, aku merasa beruntung karena bisa mengenalmu, mencintaimu, dan berjalan bersamamu hingga sejauh ini.
+Aku bersyukur kepada Tuhan karena telah mempertemukanku denganmu. Dari sekian banyak orang di dunia ini, aku merasa beruntung karena bisa mengenalmu, mencintaimu, dan berjalan bersamamu hingga saat ini.
 
-Ayangg, aku berharap di usia yang baru ini kamu selalu diberikan kesehatan, kebahagiaan, kekuatan, dan keberhasilan dalam setiap langkah yang kamu ambil. Semoga semua impian, harapan, dan cita-cita kamu dapat terwujud dengan sempurna.
+Ayangg, aku berharap di usia yang baru ini kamu selalu diberikan kesehatan, kebahagiaan, kekuatan, dan keberhasilan dalam setiap langkah yang kamu ambil. Semoga semua impian, harapan, dan cita-cita kamu menjadi kenyataan.
 
-Aku juga ingin kamu tahu bahwa kehadiranmu sangat berarti bagiku. Senyummu, perhatianmu, cara kamu peduli, dan semua hal kecil yang kamu lakukan sering kali menjadi sesuatu yang membuat hariku terasa lebih bermakna dan berwarna.
+Aku juga ingin kamu tahu bahwa kehadiranmu sangat berarti bagiku. Senyummu, perhatianmu, cara kamu peduli, dan semua hal kecil yang kamu lakukan sering kali menjadi sesuatu yang membuat hariku lebih bermakna.
 
 Terima kasih karena sudah hadir dalam hidupku selama dua tahun terakhir. Aku bersyukur karena dari sekian banyak kemungkinan di dunia ini, aku dipertemukan dengan seseorang sebaik dan seistimewa dirimu.
 
@@ -313,17 +313,26 @@ function startCountdown() {
     const heartEmojis = ['💜', '💕', '💖', '❤️', '🩷'];
     const container = document.getElementById('countdown').querySelector('.countdown-container');
     
-    // Create particle hearts
-    for (let i = 0; i < 30; i++) {
+    // Create particle hearts dengan animasi lebih kompleks
+    for (let i = 0; i < 50; i++) {
       const particle = document.createElement('div');
       particle.className = 'particle-heart';
       particle.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
-      const angle = (i / 30) * Math.PI * 2;
-      const distance = 300;
-      particle.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
-      particle.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
+      
+      // Spiral atau random direction
+      const angle = (i / 50) * Math.PI * 2 + Math.random() * 0.5;
+      const distance = 200 + Math.random() * 200;
+      const randomX = (Math.random() - 0.5) * 400;
+      const randomY = (Math.random() - 0.5) * 400;
+      
+      particle.style.setProperty('--tx', Math.cos(angle) * distance + randomX + 'px');
+      particle.style.setProperty('--ty', Math.sin(angle) * distance + randomY + 'px');
       particle.style.left = '50%';
       particle.style.top = '50%';
+      particle.style.marginLeft = '-20px';
+      particle.style.marginTop = '-20px';
+      particle.style.fontSize = (20 + Math.random() * 40) + 'px';
+      
       container.appendChild(particle);
       setTimeout(() => particle.remove(), 2000);
     }
