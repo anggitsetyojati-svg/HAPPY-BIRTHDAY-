@@ -24,16 +24,16 @@ h1{font-size:clamp(2rem,5vw,4rem)}
 .section{padding:80px 20px;max-width:1200px;margin:auto}
 
 /* Countdown styles */
-.countdown-page{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:100;background:linear-gradient(135deg,#0b1020,#1b1f3a,#432c52)}
+.countdown-page{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:100;background:#0b1020}
 .countdown-page.active{display:flex}
-.countdown-container{text-align:center;position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column}
-.stars{position:absolute;width:100%;height:100%;overflow:hidden}
-.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:twinkle 3s infinite}
-@keyframes twinkle{0%,100%{opacity:.3}50%{opacity:1}}
-@keyframes starMove{0%{transform:translateY(0)}100%{transform:translateY(-100vh)}}
-.star-moving{animation:starMove 20s linear infinite}
-.countdown-number{font-size:150px;font-weight:700;z-index:10;animation:popOut 0.8s ease-out}
-.emoji-particle{position:absolute;font-size:60px;animation:floatAway 1.2s ease-out forwards}
+.countdown-container{text-align:center;position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;overflow:hidden}
+
+/* Character grid background */
+.char-grid{position:absolute;width:100%;height:100%;top:0;left:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(30px,1fr));grid-template-rows:repeat(auto-fill,minmax(30px,1fr));z-index:1;opacity:0.5}
+.char-cell{display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:bold;color:#ff1493;text-shadow:0 0 10px #ff1493;font-family:monospace}
+
+.countdown-number{font-size:150px;font-weight:700;z-index:10;animation:popOut 0.8s ease-out;color:#ff1493;text-shadow:0 0 30px #ff1493,0 0 60px #ff1493;letter-spacing:10px}
+.emoji-particle{position:absolute;font-size:60px;animation:floatAway 1.2s ease-out forwards;z-index:5}
 @keyframes popOut{0%{transform:scale(0);opacity:1}100%{transform:scale(1);opacity:0.3}}
 @keyframes floatAway{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0.5)}}
 
@@ -96,7 +96,7 @@ footer{padding:120px 20px;text-align:center;background:linear-gradient(135deg,#4
 </div>
 
 <div id="countdown" class="countdown-page">
-<div class="stars" id="starsContainer"></div>
+<div class="char-grid" id="charGrid"></div>
 <div class="countdown-container">
 <div class="countdown-number" id="countdownNumber">3</div>
 </div>
@@ -152,9 +152,9 @@ const text=`Untuk Ayangg, Andrea Nadine ❤️
 
 Selamat ulang tahun yang ke-20, Ayangg.
 
-Hari ini adalah hari yang sangat spesial karena hari ini adalah hari lahir seseorang putri kecil yang begitu berarti dalam hidupku. Seseorang yang selama dua tahun terakhir telah mengisi hari-hariku dengan penuh warna dan cerita indah.
+Hari ini adalah hari yang sangat spesial karena hari ini adalah hari lahir seseorang putri kecil yang begitu berarti dalam hidupku. Seseorang yang selama dua tahun terakhir telah mengisi hari-hariku dengan cinta, perhatian, dan kebahagiaan yang tak ternilai.
 
-Di hari ulang tahunmu ini, aku ingin mengucapkan terima kasih untuk semua hal yang sudah kamu berikan kepadaku. Terima kasih karena telah hadir dalam hidupku. Terima kasih karena telah menjadi tempat aku bisa bersandar, tersenyum, dan tumbuh.
+Di hari ulang tahunmu ini, aku ingin mengucapkan terima kasih untuk semua hal yang sudah kamu berikan kepadaku. Terima kasih karena telah hadir dalam hidupku. Terima kasih karena telah menjadi tempat berlindung dan sumber kebahagiaan di setiap harinya.
 
 Aku bersyukur kepada Tuhan karena telah mempertemukanku denganmu. Dari sekian banyak orang di dunia ini, aku merasa beruntung karena bisa mengenalmu, mencintaimu, dan berjalan bersamamu hingga sejauh ini.
 
@@ -296,39 +296,41 @@ sliderContainer.addEventListener('mouseleave', () => {
   }
 }, false);
 
-// Countdown functionality
-function createStars() {
-  const container = document.getElementById('starsContainer');
-  container.innerHTML = '';
-  for (let i = 0; i < 100; i++) {
-    const star = document.createElement('div');
-    star.className = 'star star-moving';
-    star.style.left = Math.random() * 100 + '%';
-    star.style.top = Math.random() * 100 + '%';
-    star.style.animationDelay = Math.random() * 20 + 's';
-    container.appendChild(star);
+// Countdown functionality - Character grid
+function createCharGrid() {
+  const charGrid = document.getElementById('charGrid');
+  charGrid.innerHTML = '';
+  const chars = 'HAPPYBIRTHDAYY';
+  const cols = Math.ceil(window.innerWidth / 30);
+  const rows = Math.ceil(window.innerHeight / 30);
+  
+  for (let i = 0; i < cols * rows; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'char-cell';
+    cell.textContent = chars[Math.floor(Math.random() * chars.length)];
+    charGrid.appendChild(cell);
   }
 }
 
 function startCountdown() {
   document.getElementById('gift').style.display = 'none';
   document.getElementById('countdown').classList.add('active');
-  createStars();
+  createCharGrid();
   
   let count = 3;
   const countdownNumber = document.getElementById('countdownNumber');
   
   const countdown = setInterval(() => {
-    const emojis = ['💕', '🎈'];
+    const emojis = ['💕', '🎈', '🎉', '🎊', '💖'];
     const container = document.getElementById('countdown').querySelector('.countdown-container');
     
     // Pecah angka menjadi emoji
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 40; i++) {
       const particle = document.createElement('div');
       particle.className = 'emoji-particle';
       particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      const angle = (i / 30) * Math.PI * 2;
-      const distance = 200;
+      const angle = (i / 40) * Math.PI * 2;
+      const distance = 250;
       particle.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
       particle.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
       particle.style.left = '50%';
