@@ -29,34 +29,34 @@ h1{font-size:clamp(2rem,5vw,4rem)}
 .countdown-container{text-align:center;position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;overflow:hidden}
 
 /* Neon text */
-.neon-text{font-size:clamp(2rem,8vw,4rem);font-weight:700;color:#00f0ff;text-shadow:0 0 10px #00f0ff,0 0 20px #ff1493,0 0 30px #00f0ff,0 0 40px #ff1493;letter-spacing:3px;margin-bottom:50px;animation:neonFlicker 0.15s infinite}
+.neon-text{font-size:clamp(2rem,8vw,4rem);font-weight:700;color:#00f0ff;text-shadow:0 0 10px #00f0ff,0 0 20px #ff1493,0 0 30px #00f0ff,0 0 40px #ff1493;letter-spacing:3px;margin-bottom:50px;animation:neonFlicker 0.3s infinite}
 
 @keyframes neonFlicker{0%,19%,21%,23%,25%,54%,56%,100%{text-shadow:0 0 10px #00f0ff,0 0 20px #ff1493,0 0 30px #00f0ff,0 0 40px #ff1493}20%,24%,55%{text-shadow:none}}
 
 /* Glowing heart */
 .glowing-heart{position:relative;font-size:200px;animation:heartPulse 1.5s ease-in-out infinite;filter:drop-shadow(0 0 20px #ff1493) drop-shadow(0 0 40px #ff1493) drop-shadow(0 0 60px #ff1493)}
 
-@keyframes heartPulse{0%,100%{transform:scale(1);filter:drop-shadow(0 0 20px #ff1493) drop-shadow(0 0 40px #ff1493) drop-shadow(0 0 60px #ff1493)}50%{transform:scale(1.1);filter:drop-shadow(0 0 30px #ff1493) drop-shadow(0 0 60px #ff1493) drop-shadow(0 0 90px #ff1493)}}
+@keyframes heartPulse{0%,100%{transform:scale(1);filter:drop-shadow(0 0 20px #ff1493) drop-shadow(0 0 40px #ff1493) drop-shadow(0 0 60px #ff1493)}50%{transform:scale(1.1);filter:drop-shadow(0 0 30px #ff1493) drop-shadow(0 0 50px #ff1493) drop-shadow(0 0 70px #ff1493)}}
 
 /* Enhanced Particles */
 .particle-heart{position:absolute;font-size:40px;animation:particleFloat 2s ease-out forwards;z-index:5;filter:drop-shadow(0 0 10px currentColor);pointer-events:none}
 
-@keyframes particleFloat{0%{opacity:1;transform:translate(0,0) scale(1) rotate(0deg)}50%{opacity:0.8;transform:translate(calc(var(--tx)*0.5), calc(var(--ty)*0.5)) scale(0.8) rotate(180deg)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0.3) rotate(360deg)}}
+@keyframes particleFloat{0%{opacity:1;transform:translate(0,0) scale(1) rotate(0deg)}50%{opacity:0.8;transform:translate(calc(var(--tx)*0.5), calc(var(--ty)*0.5)) scale(0.8) rotate(180deg)}100%{opacity:0;transform:translate(var(--tx), var(--ty)) scale(0) rotate(360deg)}}
 
 /* Slider styles */
 .slider-container{position:relative;width:min(90%,420px);height:400px;margin:auto;border-radius:22px;overflow:hidden;touch-action:pan-y}
 .slider-wrapper{display:flex;height:100%;transition:transform 0.3s ease-out;gap:0;padding:0}
 .slider-wrapper.dragging{transition:none}
-.slider img{width:100%;height:100%;object-fit:cover;border-radius:22px;flex-shrink:0;opacity:0;transition:opacity 0.3s ease-out;margin:0;display:none}
-.slider img.active{opacity:1;display:block}
+.slider-wrapper img{width:100%;height:100%;object-fit:cover;border-radius:22px;flex-shrink:0;opacity:0;transition:opacity 0.3s ease-out;margin:0}
+.slider-wrapper img.active{opacity:1}
 .slider-nav{display:flex;justify-content:center;gap:10px;margin-top:20px}
 .slider-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:all 0.3s}
 .slider-dot.active{background:#fff;width:30px;border-radius:5px}
-.slider-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.3);border:none;color:#fff;font-size:24px;padding:10px 15px;cursor:pointer;border-radius:5px;transition:all 0.3s}
+.slider-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.3);border:none;color:#fff;font-size:24px;padding:10px 15px;cursor:pointer;border-radius:5px;transition:all 0.3s;z-index:10}
 .slider-arrow:hover{background:rgba(255,255,255,.6)}
 .slider-arrow.prev{left:10px}
 .slider-arrow.next{right:10px}
-.slider-counter{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.6);color:#fff;padding:8px 12px;border-radius:20px;font-size:12px}
+.slider-counter{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.6);color:#fff;padding:8px 12px;border-radius:20px;font-size:12px;z-index:10}
 
 .reason-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
 .reason{background:rgba(255,255,255,.08);padding:18px;border-radius:18px}
@@ -158,15 +158,15 @@ const text=`Untuk Ayangg, Andrea Nadine ❤️
 
 Selamat ulang tahun yang ke-20, Ayangg.
 
-Hari ini adalah hari yang sangat spesial karena hari ini adalah hari lahir seseorang putri kecil yang begitu berarti dalam hidupku. Seseorang yang selama dua tahun terakhir telah mengisi hari-hariku dengan kebahagiaan, tawa, cinta, dan momen-momen indah yang tak terlupakan.
+Hari ini adalah hari yang sangat spesial karena hari ini adalah hari lahir seseorang putri kecil yang begitu berarti dalam hidupku. Seseorang yang selama dua tahun terakhir telah mengisi hari-hariku dengan kebahagiaan yang luar biasa. Seseorang yang selalu membuatku tersenyum bahkan di saat-saat yang paling sulit sekalipun.
 
-Di hari ulang tahunmu ini, aku ingin mengucapkan terima kasih untuk semua hal yang sudah kamu berikan kepadaku. Terima kasih karena telah hadir dalam hidupku. Terima kasih karena telah menjadi tempat aku berlabuh ketika badai datang.
+Di hari ulang tahunmu ini, aku ingin mengucapkan terima kasih untuk semua hal yang sudah kamu berikan kepadaku. Terima kasih karena telah hadir dalam hidupku. Terima kasih karena telah menjadi tempat berlindung dan tempat terbaik bagi hati ini.
 
-Aku bersyukur kepada Tuhan karena telah mempertemukanku denganmu. Dari sekian banyak orang di dunia ini, aku merasa beruntung karena bisa mengenalmu, mencintaimu, dan berjalan bersamamu hingga saat ini.
+Aku bersyukur kepada Tuhan karena telah mempertemukanku denganmu. Dari sekian banyak orang di dunia ini, aku merasa beruntung karena bisa mengenalmu, mencintaimu, dan berjalan bersamamu hingga saat ini. Dua tahun ini terasa seperti mimpi yang indah dan aku ingin terus bermimpi bersama ayang.
 
 Ayangg, aku berharap di usia yang baru ini kamu selalu diberikan kesehatan, kebahagiaan, kekuatan, dan keberhasilan dalam setiap langkah yang kamu ambil. Semoga semua impian, harapan, dan cita-cita kamu menjadi kenyataan.
 
-Aku juga ingin kamu tahu bahwa kehadiranmu sangat berarti bagiku. Senyummu, perhatianmu, cara kamu peduli, dan semua hal kecil yang kamu lakukan sering kali menjadi sesuatu yang membuat hariku lebih bermakna.
+Aku juga ingin kamu tahu bahwa kehadiranmu sangat berarti bagiku. Senyummu, perhatianmu, cara kamu peduli, dan semua hal kecil yang kamu lakukan sering kali menjadi sesuatu yang membuat hariku lebih berwarna dan penuh makna.
 
 Terima kasih karena sudah hadir dalam hidupku selama dua tahun terakhir. Aku bersyukur karena dari sekian banyak kemungkinan di dunia ini, aku dipertemukan dengan seseorang sebaik dan seistimewa dirimu.
 
@@ -215,15 +215,13 @@ function initSliderNav() {
 
 function updateSlider() {
   // Update semua image untuk menampilkan/sembunyikan dengan class
-  document.querySelectorAll('.slider img').forEach((img, i) => {
+  document.querySelectorAll('.slider-wrapper img').forEach((img, i) => {
     if (i === currentSlide) {
       img.classList.add('active');
       img.style.opacity = '1';
-      img.style.display = 'block';
     } else {
       img.classList.remove('active');
       img.style.opacity = '0';
-      img.style.display = 'none';
     }
   });
   
