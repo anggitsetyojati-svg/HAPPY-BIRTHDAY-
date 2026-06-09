@@ -221,7 +221,7 @@ function updateSlider() {
       img.style.opacity = '1';
     } else {
       img.classList.remove('active');
-      img.style.opacity = '0';
+      img.style.opacity = '1';
     }
   });
   
